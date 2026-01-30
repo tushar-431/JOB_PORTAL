@@ -5,9 +5,10 @@ import Categories from './Categories'
 import LatestJobs from './LatestJobs'
 import Footer from './Footer'
 import useGetAllJobs from '../hooks/useGetAllJobs'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
+import { setSearchedQuery } from '../../redux/jobSlice'
 
 const Home = () => {
   const {user} = useSelector((store)=>store.auth)
@@ -22,6 +23,11 @@ const Home = () => {
 
 
   useGetAllJobs()
+  useEffect(()=>{
+    const dispatch= useDispatch()
+    dispatch(setSearchedQuery(""))
+  },[])
+  
   return (
     <div>
         <Navbar />

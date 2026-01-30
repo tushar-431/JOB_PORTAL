@@ -15,6 +15,7 @@ const Browse = ({query}) => {
   useEffect(()=>{
     return () => {
       dispatch(setSearchedQuery(""))
+      // useGetAllJobs()
     }
   },[])
 

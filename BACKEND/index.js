@@ -17,12 +17,13 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
 
 const corsOptions = {
-    origin: [`http://localhost:5173`],
-    credentials: true,
+  origin: ["http://localhost:5173"],
+  credentials: true,
 };
 
 
 app.use(cors(corsOptions))
+
 
 const PORT = process.env.PORT || 5001
 
@@ -32,16 +33,20 @@ app.use('/api/user', userRouter)
 app.use('/api/company', companyRouter)
 app.use('/api/job', jobRouter)
 app.use('/api/application', applicationRouter)
-
+// app.get('*',(req,res)=>{
+//   res.send('GET Request handled');
+// })
 
 // ------- code for deployment --------
 
 if(process.env.Node_Env === "production"){
+  console.log("first")
   const dirpath = path.resolve();
   app.use(express.static("./FRONTEND/dist"))
-
-  app.get('*', (req,res)=>{
-    res.sendFile(path.resolve(dirpath, "./FRONTEND/dist", "index.html"))
+  console.log("first2",dirpath )
+  app.get('/', (req,res)=>{
+    console.log("first3")
+    // res.sendFile(path.resolve(dirpath, "./FRONTEND/dist", "index.html"))
   })
 } 
 

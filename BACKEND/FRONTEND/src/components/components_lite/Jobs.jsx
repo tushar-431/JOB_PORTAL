@@ -12,7 +12,7 @@ const Jobs = () => {
    
 
     useEffect(()=>{
-        if(!searchQuery || searchQuery.trim()===''){
+        if(!searchQuery || searchQuery.trim() === ""){
             setFilterJobs(allJobs)
             return
         }

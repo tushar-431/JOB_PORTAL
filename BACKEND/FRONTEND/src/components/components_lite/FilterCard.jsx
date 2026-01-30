@@ -5,14 +5,32 @@ import { setSearchedQuery } from '../../redux/jobSlice';
 
 const filterData = [
   {
+    filterType: "",
+    array:[
+      "All"
+    ]
+  },
+  {
     filterType: "Location",
     array:[
       "Delhi", "Mumbai", "Bengaluru", "Chennai", "Kolkata", "Hyderabad", "Remote"
     ]
   },
   {
-    filterType: "Industry",
-    array: ["IT", "Finance", "Marketing", "Healthcare", "Education", "Manufacturing"]
+    filterType: "Technology",
+    array: [
+      "Mern",
+      "React",
+      "Data Scientist",
+      "Fullstack",
+      "Node",
+      "Python",
+      "Java",
+      "frontend",
+      "backend",
+      "mobile",
+      "desktop",
+    ],
   },{
     filterType: "Experience",
     array:["0-3 years", "3-5 years", "5-7 years", "7+ years"]
@@ -31,6 +49,9 @@ const FilterCard = () => {
   }
 
   useEffect(()=>{
+    if (selectedValue==='All'){
+      setSelectedValue('')
+    }
     dispatch(setSearchedQuery(selectedValue))
   },[selectedValue])
 
